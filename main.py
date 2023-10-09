@@ -10,8 +10,8 @@ logger.addHandler(logging.StreamHandler())
 @app.post('/parser')
 def run(data = Body()):
 
-    if data['companyName'] and data['queries']:
-        parser = Parser(data['companyName'],  data['queries'])
+    if data['companyName'] and data['queries'] and data['pages']:
+        parser = Parser(data['companyName'],  data['queries'], data['pages'])
         posts = parser.parser()
         return {"res": f"{posts}"}
     else:
