@@ -11,9 +11,9 @@ logger.addHandler(logging.StreamHandler())
 def run(data = Body()):
 
     if data['companyName'] and data['queries']:
-        posts = Parser(data['companyName'],  data['queries'])
-        logger.info(posts)
-        return {"res": f"{data['companyName']}"}
+        parser = Parser(data['companyName'],  data['queries'])
+        posts = parser.parser()
+        return {"res": f"{posts}"}
     else:
         return {"error": "Ошибка"}
 

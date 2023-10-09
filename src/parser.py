@@ -18,13 +18,15 @@ class Parser:
 
     def parser(self):
         try:
-            self.driver.get(f'{self.url}{self.company_name}{self.queries}')
-            time.sleep(5000)
-
+            self.driver.get(f'{self.url}{self.company_name}+{self.queries}')
             body = self.driver.find_element(by=By.ID, value='search-result')
             soup = BeautifulSoup(body.text, 'html.parser')
-            lt = soup.find('b', self.company_name).prettify()
-            return lt
+            print(soup)
+            lt = soup.find('b', self.company_name)
 
+            return lt
         except Exception as e:
             print(e)
+        finally:
+            self.driver.close()
+            self.driver.quit()
