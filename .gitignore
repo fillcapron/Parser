@@ -8,7 +8,7 @@ __pycache__/
 
 .idea/
 chromedriver.exe
-
+sql_app.db
 # Distribution / packaging
 .Python
 build/
